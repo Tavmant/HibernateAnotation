@@ -8,16 +8,16 @@ import java.util.logging.Level;
 public class Main {
 	static void menu() {
 		System.out.println("\n----------------------"
-				+ "\nВведіть 1 щоб додати фракцію"
-				+ "\nВведіть 2 щоб видалити фракцію"
-				+ "\nВведіть 3 щоб очистити фракцію"
-				+ "\nВведіть 4 щоб вивести фракції"
-				+ "\nВведіть 5 щоб вивести фракцію"
-				+ "\nВведіть 6 щоб додати депутата в фракцію"
-				+ "\nВведіть 7 щоб видалити депутата з фракції "
-				+ "\nВведіть 8 щоб вивести список хабарників "
-				+ "\nВведіть 9 щоб вивести найбільшого хабарника"
-				+ "\nВведіть 0 щоб вийти з програми");
+				+ "\n1 - Add fraction"
+				+ "\n2 - Remove fraction"
+				+ "\n3 - Clear fraction"
+				+ "\n4 - Print all fractions"
+				+ "\n5 - Print some fraction"
+				+ "\n6 - Add deputy"
+				+ "\n7 - Remove deputy"
+				+ "\n8 - Print all brabe-takers"
+				+ "\n9 - Print the largest brabe-taker"
+				+ "\n0 - Exit");
 	}
 	
 	static List<Fraction> defaultFractions() {
@@ -99,7 +99,7 @@ public class Main {
 				}
 			}
 		} catch (Exception e) {
-			System.err.println("Перезапустіть програму.");
+			System.err.println("Restart the program.");
 		}
 	}
 }

@@ -12,9 +12,5 @@
 		<property name="hbm2ddl.auto">update</property>
 		<property name="show_sql">false</property>
 		<property name="format_sql">false</property>
-		
-	<mapping class="HomeWork.Deputat"/>
-    <mapping class="HomeWork.Fraction"/>
-    
 	</session-factory>
 </hibernate-configuration>

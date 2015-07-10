@@ -1,13 +1,11 @@
 package HomeWork;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 public class MainRada {
 	private List<Fraction> list;
-	private String name;
 
 	public MainRada(List<Fraction> list) {
 		this.list = list;
@@ -29,14 +27,10 @@ public class MainRada {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter the name of the fraction: ");
 		String tmp = sc.nextLine();
-		if (list.size() > 1) {
-			for (Fraction frac : list) {
-				if (frac.getName().equalsIgnoreCase(tmp)) {
-					return frac;
-				}
+		for (Fraction frac : list) {
+			if (frac.getName().equalsIgnoreCase(tmp)) {
+				return frac;
 			}
-		} else {
-			list.clear();
 		}
 		throw new IllegalArgumentException("This fraction doesn't exists.");
 	}
@@ -80,14 +74,13 @@ public class MainRada {
 		throw new IllegalArgumentException("This fraction doesn't exists.");
 	}
 
-	public Fraction removeDeputat() {
+	public int removeDeputat() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter the name of the fraction: ");
 		String tmp = sc.nextLine();
 		for (Fraction frac : list) {
 			if (frac.getName().equalsIgnoreCase(tmp)) {
-				frac.removeDeputat();
-				return frac;
+				return frac.removeDeputat();
 			}
 		}
 		throw new IllegalArgumentException("This fraction doesn't exists.");
@@ -111,7 +104,6 @@ public class MainRada {
 		String tmp = sc.nextLine();
 		for (Fraction frac : list) {
 			if (frac.getName().equalsIgnoreCase(tmp)) {
-				frac.getList().clear();
 				return frac;
 			}
 		}

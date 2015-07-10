@@ -110,7 +110,8 @@ public class MainRadaDao {
 			
 			fraction = session.createCriteria(Fraction.class).list();
 			rada = new MainRada(fraction);
-			session.update(rada.removeDeputat());
+			int deputatId = rada.removeDeputat();
+			session.delete((Deputat) session.get(Deputat.class, deputatId));
 			
 			session.getTransaction().commit();
 		} catch (IllegalArgumentException e) {
@@ -163,8 +164,16 @@ public class MainRadaDao {
 			
 			fraction = session.createCriteria(Fraction.class).list();
 			rada = new MainRada(fraction);
-			session.update(rada.clearFraction());
 			
+			Fraction f = rada.clearFraction();
+			for (Deputat dep : f.getList()) {
+				session.delete((Deputat) session.get(Deputat.class, dep.getId()));
+			}
+			f.getList().clear();
+			session.update(f);
+			
+			session.flush();
+			session.getTransaction().commit();
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		} catch (Exception e) {

@@ -23,7 +23,7 @@ public class Fraction {
 	@Column
 	private String name;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "fraction")
-	private List<Deputat> list = new ArrayList<>();
+	private List<Deputat> list;
 	
 	public Fraction() {
 		//NON
@@ -31,6 +31,7 @@ public class Fraction {
 
 	public Fraction(String name) {
 		this.name = name;
+		this.list = new ArrayList<>();
 	}
 	
 	public Fraction(String name, List<Deputat> deputat) {
@@ -81,7 +82,7 @@ public class Fraction {
 		list.add(d);
 	}
 
-	public void removeDeputat() {
+	public int removeDeputat() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nEnter deputy for expulsion: ");
 		System.out.print("Surname= ");
@@ -93,9 +94,12 @@ public class Fraction {
 			Deputat dep = iter.next();
 			if (dep.getLastName().equalsIgnoreCase(lastName)
 					&& dep.getFirstName().equalsIgnoreCase(firstName)) {
+				int deputatId = dep.getId();
 				iter.remove();
+				return deputatId;
 			}
 		}
+		throw new IllegalArgumentException("This deputat doesn't exist!");
 	}
 
 	public void printBraberTakers() {
